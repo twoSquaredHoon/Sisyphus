@@ -33,6 +33,12 @@ app.get('/', function(request, response){
 
 // saving in db
 app.get('/news', (request, response) => {
-    db.collection('money').insertOne({title : 'yarr'})
+    db.collection('money').insertOne({title : 'kung kung'})
     // response.send('took a shit')
+})
+
+app.get('/list', async (request, response) => {
+    let result = await db.collection('money').find().toArray()
+    console.log(result)
+    response.send('stuff in db')
 })
