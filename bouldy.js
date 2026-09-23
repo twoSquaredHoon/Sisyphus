@@ -39,6 +39,7 @@ app.get('/news', (request, response) => {
 
 app.get('/list', async (request, response) => {
     let result = await db.collection('money').find().toArray()
-    console.log(result)
+    console.log(result[0].title)
     response.send('stuff in db')
 })
+
