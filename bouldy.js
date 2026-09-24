@@ -3,6 +3,8 @@ const app = express();
 
 // allows access to files that are public
 app.use(express.static(__dirname + '/public'))
+// now we can use ejs to put data in html
+app.set('view engine', 'ejs')
 
 // basic mongo db setup
 const { MongoClient } = require('mongodb');
@@ -37,9 +39,9 @@ app.get('/news', (request, response) => {
     // response.send('took a shit')
 })
 
-app.get('/list', async (request, response) => {
+app.get('/drugs', async (request, response) => {
     let result = await db.collection('money').find().toArray()
     console.log(result[0].title)
-    response.send('stuff in db')
-})
 
+    response.render('drugs.ejs', { result2 : result })
+})
